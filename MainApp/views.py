@@ -21,6 +21,7 @@ def home(request):
     text = """
     <h1>"Изучаем django"</h1>
     <strong>Автор</strong>: <i>Иванов И.П.</i>
+    <a href='/items/'>Список товаров</a>
     """
     return HttpResponse(text)
 
@@ -39,7 +40,8 @@ def item_page(request, id):
     for item in items:
         if item['id'] == id:
             text = f"""<h2>{item['name']}</h2>
-            количество: {item['quantity']}
+            количество: {item['quantity']}<br>
+            <a href='/items/'>Назад</a>
             """
             return HttpResponse(text)
 
@@ -49,6 +51,6 @@ def item_page(request, id):
 def items_list(request):
     text = "<h2>Список товаров</h2><ol>"
     for item in items:
-        text += f"<li>{item['name']}</li>"
+        text += f"<li><a href='/item/{item['id']}'>{item['name']}</a></li>"
     text += "</ol>"
     return HttpResponse(text)
