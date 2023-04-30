@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.http import HttpResponseNotFound
 
 author = {
     "name": "Евгений",
@@ -31,4 +32,23 @@ def about(request):
     телефон: <b>{author['phone']}</b><br>
     email:   <b>{author['email']}</b>
     """
+    return HttpResponse(text)
+
+
+def item_page(request, id):
+    for item in items:
+        if item['id'] == id:
+            text = f"""<h2>{item['name']}</h2>
+            количество: {item['quantity']}
+            """
+            return HttpResponse(text)
+
+    return HttpResponseNotFound(f"Товар с id={id} не найден")
+
+
+def items_list(request):
+    text = "<h2>Список товаров</h2><ol>"
+    for item in items:
+        text += f"<li>{item['name']}</li>"
+    text += "</ol>"
     return HttpResponse(text)
