@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseNotFound
+from MainApp.models import Item
 
 author = {
     "name": "Евгений",
@@ -7,13 +8,6 @@ author = {
     "phone": "89007001122",
     "email": "eyurchenko@specialist.ru",
 }
-items = [
-    {"id": 1, "name": "Кроссовки abibas", "quantity": 5},
-    {"id": 2, "name": "Куртка кожаная", "quantity": 2},
-    {"id": 5, "name": "Coca-cola 1 литр", "quantity": 12},
-    {"id": 7, "name": "Картофель фри", "quantity": 0},
-    {"id": 8, "name": "Кепка", "quantity": 124},
-]
 
 
 # Create your views here.
@@ -44,11 +38,7 @@ def item_page(request, id):
 
 
 def items_list(request):
-    # text = "<h2>Список товаров</h2><ol>"
-    # for item in items:
-    #     text += f"<li><a href='/item/{item['id']}'>{item['name']}</a></li>"
-    # text += "</ol>"
-    # return HttpResponse(text)
+    items = Item.objects.all()
     context = {
         'items': items
     }
