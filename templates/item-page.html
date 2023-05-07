@@ -8,12 +8,12 @@
 {% include 'menu.html' %}
 <h2>{{ item.name }}</h2>
 количество:
-{% if item.count == 0 %}
-    Товара нет на складе
-{% else %}
-    {{ item.count }}
-{% endif %}
+{{ item.count |  default:'Товара нет на складе'}}
 <br>
+
+<div>
+    {{ item.description }}
+</div>
 
 <a href='/items/'>Назад</a>
 
