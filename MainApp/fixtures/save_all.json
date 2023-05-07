@@ -1,0 +1,42 @@
+[
+  {
+    "model": "MainApp.item",
+    "pk": 1,
+    "fields": {
+      "name": "Кроссовки",
+      "brand": "adiddas",
+      "count": 5,
+      "description": "Базовое описание"
+    }
+  },
+  {
+    "model": "MainApp.item",
+    "pk": 2,
+    "fields": {
+      "name": "Яблоко",
+      "brand": "Apple",
+      "count": 100,
+      "description": "Базовое описание"
+    }
+  },
+  {
+    "model": "MainApp.item",
+    "pk": 3,
+    "fields": {
+      "name": "Кепка",
+      "brand": "Reebok",
+      "count": 0,
+      "description": "Базовое описание"
+    }
+  },
+  {
+    "model": "MainApp.item",
+    "pk": 4,
+    "fields": {
+      "name": "Шуба",
+      "brand": "Ice",
+      "count": 10,
+      "description": "Описание шубы"
+    }
+  }
+]
