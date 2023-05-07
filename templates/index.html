@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .main-header{
+            color: blue;
+        }
+    </style>
 </head>
 <body>
 {% include 'menu.html' %}
-<h1>"Изучаем django"</h1>
-<strong>Автор</strong>: <i>{{ name }} {{ surname }}</i>
+<h1 class="main-header">"Изучаем django"</h1>
+<strong style="color: red">Автор</strong>: <i>{{ name }} {{ surname }}</i>
 </body>
 </html>
