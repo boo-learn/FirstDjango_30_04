@@ -19,3 +19,21 @@
 
 ### Часть-3
 Сюда задания из гугло-дока переносим самостоятельно, помечаем выполненные.
+
+
+## Инструкция по запуску проекта после клонирования
+
+1. Клонируем проект: `git clone <git-hub-url>`
+1. Создаем venv: `python3 -m venv <venv_name>`
+где venv_name название виртуального окружения
+1. Активируем venv: `source venv_name/bin/activate`
+1. Устанавливаем зависимости: `pip install -r requirements.txt`
+1. Создаем базу(применяя миграции): `python manage.py migrate`
+1. Запускаем проект командой: `python manage.py runserver`
+
+### Вспомогательные команды
+
+1. Заполнение БД из fixture:
+`python manage.py loaddata countries.json`
+1. Запуск python-shell с контекстом django:
+`python manage.py shell_plus --ipython`
