@@ -1,7 +1,7 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponseNotFound
 from django.core.exceptions import ObjectDoesNotExist
-from MainApp.models import Item
+from MainApp.models import Item, Color
 
 author = {
     "name": "Евгений",
@@ -39,10 +39,32 @@ def item_page(request, id):
     return render(request, 'item-page.html', context)
 
 
-
 def items_list(request):
     items = Item.objects.all()
     context = {
         'items': items
     }
     return render(request, 'item-list.html', context)
+
+
+def item_add(request):
+    if request.method == "GET":
+        colors = Color.objects.all()
+        context = {
+            "colors": colors
+        }
+        return render(request, "item-add.html", context)
+
+
+# Получаем данные от формы
+def item_create(request):
+    if request.method == "POST":
+        form_data = request.POST
+        # print(f"{form_data=}")
+        item = Item(
+            name=form_data['name'],
+            brand=form_data['brand'],
+            count=form_data['count'],
+        )
+        item.save()
+        return redirect('items-list')

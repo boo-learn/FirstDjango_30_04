@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        select {
+            width: 12em;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <h2>Добавление товара</h2>
+    <form action="{% url 'item-create' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Название"> <br>
+        <input type="text" name="brand" placeholder="Брэнд"> <br>
+        <input type="number" name="count" placeholder="Количество"> <br>
+        <select name="colors" placeholder="Цвета" multiple>
+            {% for color in colors %}
+                <option value="{{ color.id }}">{{ color.name }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Создать</button>
+    </form>
+    {% load static %}
+    <script src=" {% static 'multiselect-dropdown.js' %}"></script>
+{% endblock %}
