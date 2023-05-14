@@ -13,7 +13,7 @@
         <input type="text" name="name" placeholder="Название"> <br>
         <input type="text" name="brand" placeholder="Брэнд"> <br>
         <input type="number" name="count" placeholder="Количество"> <br>
-        <select name="colors" placeholder="Цвета" multiple>
+        <select name="colors_id" placeholder="Цвета" multiple>
             {% for color in colors %}
                 <option value="{{ color.id }}">{{ color.name }}</option>
             {% endfor %}

@@ -60,11 +60,16 @@ def item_add(request):
 def item_create(request):
     if request.method == "POST":
         form_data = request.POST
-        # print(f"{form_data=}")
+        print(f"{form_data=}")
         item = Item(
             name=form_data['name'],
             brand=form_data['brand'],
             count=form_data['count'],
         )
         item.save()
+
+        colors_id = form_data.getlist("colors_id")
+        for color_id in colors_id:
+            color = Color.objects.get(id=color_id)
+            item.colors.add(color)
         return redirect('items-list')

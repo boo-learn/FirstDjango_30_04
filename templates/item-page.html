@@ -4,14 +4,20 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 {% endblock %}
 {% block content %}
-<h2>{{ item.name }}</h2>
-количество:
-{{ item.count |  default:'Товара нет на складе'}}
-<br>
+    <h2>{{ item.name }}</h2>
+    количество:
+    {{ item.count |  default:'Товара нет на складе' }}
+    <br>
 
-<div class="test">
-    {{ item.description }}
-</div>
+    <div class="test">
+        {{ item.description }}
+    </div>
+    Цвета:
+    <ul>
+        {% for color in item.colors.all %}
+            <li>{{ color.name }} </li>
+        {% endfor %}
+    </ul>
 
-<a href='/items/'>Назад</a>
+    <a href='/items/'>Назад</a>
 {% endblock %}
